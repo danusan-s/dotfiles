@@ -1,0 +1,90 @@
+console_title_template = '{{ .Shell }} in {{ .Folder }}'
+version = 3
+final_space = true
+
+[secondary_prompt]
+  template = '❯❯ '
+  foreground = 'magenta'
+  background = 'transparent'
+
+[transient_prompt]
+  template = '❯ '
+  background = 'transparent'
+  foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}magenta{{end}}']
+  # newline = true
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    template = ' <b>{{ .UserName }}</b> '
+    foreground = '#000000'
+    background = 'green'
+    type = 'session'
+    style = "diamond"
+    leading_diamond = "\ue0b6"
+    trailing_diamond = "\ue0b0"
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+      style = 'full'
+
+  [[blocks.segments]]
+    template = ' <b>{{ .Path }}</b> '
+    foreground = '#000000'
+    background = 'blue'
+    type = 'path'
+    style = "diamond"
+    leading_diamond = "<transparent>\ue0b0</>"
+    trailing_diamond = "\ue0b0"
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+      style = 'full'
+
+  [[blocks.segments]]
+    template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }}{{ if gt .Behind 0 }} {{ end }}{{ if gt .Ahead 0 }} {{ end }} '
+    foreground = '#000000'
+    background = 'red'
+    type = 'git'
+    style = "diamond"
+    leading_diamond = "<transparent>\ue0b0</>"
+    trailing_diamond = "\ue0b0"
+
+    [blocks.segments.properties]
+      branch_icon = ' '
+      cache_duration = 'none'
+      commit_icon = '@ '
+      fetch_status = true
+
+[[blocks]]
+  type = 'rprompt'
+  overflow = 'hidden'
+
+  [[blocks.segments]]
+    template = '{{ .FormattedMs }}'
+    foreground = 'yellow'
+    background = 'transparent'
+    type = 'executiontime'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+      threshold = 5000
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    template = '❯'
+    background = 'transparent'
+    type = 'text'
+    style = 'plain'
+    foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}magenta{{end}}']
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
