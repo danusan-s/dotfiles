@@ -1,3 +1,5 @@
+export PATH=$PATH:/home/danusan/.local/bin
+
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -20,7 +22,7 @@ zinit light Aloxaf/fzf-tab
 zinit snippet OMZL::git.zsh
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
-zinit snippet OMZP::ubuntu
+zinit snippet OMZP::archlinux
 zinit snippet OMZP::command-not-found
 
 # Load completions
@@ -51,18 +53,6 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-export PATH="$PATH:/opt/nvim-linux64/bin"
-export PATH="$PATH:/home/danusan/.intellij/idea-IU-242.20224.419/bin"
-
-if command -v tmux > /dev/null && [ -z "$TMUX" ]; then
-  SESSION_NAME="general"
-  if tmux has-session -t $SESSION_NAME 2>/dev/null; then
-    tmux attach-session -t $SESSION_NAME
-  else
-    tmux new-session -s $SESSION_NAME 
-  fi
-fi
-
 # Aliases
 alias ls='ls --color'
 alias vim='nvim'
@@ -70,6 +60,6 @@ alias c='clear'
 
 # Shell integrations
 eval "$(zoxide init --cmd cd zsh)"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
 bindkey -v

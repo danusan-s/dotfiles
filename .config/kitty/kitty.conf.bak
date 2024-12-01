@@ -1,4 +1,3 @@
-include ./tokens.conf
 # Colors
 
 foreground #979eab
@@ -28,18 +27,12 @@ active_tab_background   #979eab
 inactive_tab_foreground #abb2bf
 inactive_tab_background #282c34
 
-map ctrl+p kitten meow/projects.py load --dir $HOME/code/ --user danusan --org my_cool_org
-map ctrl+shift+n kitten meow/projects.py new --dir $HOME/code/
-map ctrl+shift+x kitten meow/kill_old_projects.py
-map ctrl+shift+g kitten meow/cache_all_repos.py --org my_cool_org
-map ctrl+- goto_tab -1
-
 font_size 16 
-background_opacity 0.8 
+background_opacity 0.6
 
 
 # BEGIN_KITTY_FONTS
-font_family      family="CaskaydiaCove Nerd Font Mono"
+font_family      family="Source Code Pro"
 bold_font        auto
 italic_font      auto
 bold_italic_font auto
