@@ -11,7 +11,6 @@ final_space = true
   template = '❯ '
   background = 'transparent'
   foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}magenta{{end}}']
-  # newline = true
 
 [[blocks]]
   type = 'prompt'
@@ -19,57 +18,39 @@ final_space = true
   newline = true
 
   [[blocks.segments]]
-    template = ' <b>{{ .UserName }}</b> '
-    foreground = '#000000'
-    background = 'green'
-    type = 'session'
-    style = "diamond"
-    leading_diamond = "\ue0b6"
-    trailing_diamond = "\ue0b0"
+  type = 'python'
+  style = 'plain'
+  template= ' {{ .Venv }}'
+  foreground = 'white'
+  background = 'transparent'
 
     [blocks.segments.properties]
-      cache_duration = 'none'
-      style = 'full'
+    home_enabled = true
 
   [[blocks.segments]]
-    template = ' <b>{{ .Path }}</b> '
-    foreground = '#000000'
-    background = 'blue'
+    template = ' {{ .Path }}'
+    foreground = 'blue'
+    background = 'transparent'
     type = 'path'
-    style = "diamond"
-    leading_diamond = "<transparent>\ue0b0</>"
-    trailing_diamond = "\ue0b0"
+    style = 'plain'
 
     [blocks.segments.properties]
       cache_duration = 'none'
       style = 'full'
 
   [[blocks.segments]]
-    template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }}{{ if gt .Behind 0 }} {{ end }}{{ if gt .Ahead 0 }} {{ end }} '
-    foreground = '#000000'
-    background = 'red'
+    template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
+    foreground = 'red'
+    background = 'transparent'
     type = 'git'
-    style = "diamond"
-    leading_diamond = "<transparent>\ue0b0</>"
-    trailing_diamond = "\ue0b0"
+    style = 'plain'
 
     [blocks.segments.properties]
-      branch_icon = ' '
+      branch_icon = ''
       cache_duration = 'none'
-      commit_icon = '@ '
+      commit_icon = '@'
       fetch_status = true
 
-  [[blocks.segments]]
-    type = "python"
-    style = "diamond"
-    leading_diamond = "<transparent>\ue0b0</>"
-    trailing_diamond = "\ue0b0"
-    template= " {{ .Venv }} "
-    foreground = "#FFFFFF"
-    background = "#2D6DC4"
-
-    [blocks.segments.properties]
-      home_enabled = true
 
 
 [[blocks]]
