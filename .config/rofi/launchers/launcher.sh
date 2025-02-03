@@ -10,8 +10,8 @@
 ## style-1     style-2     style-3     style-4     style-5
 ## style-6     style-7     style-8     style-9     style-10
 
-dir="$HOME/.config/rofi/launchers/styles"
-theme='style-2'
+dir="$HOME/.config/rofi/launchers"
+theme='style'
 
 ## Run
 rofi \
